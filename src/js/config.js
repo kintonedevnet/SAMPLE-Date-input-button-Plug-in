@@ -8,8 +8,10 @@ jQuery.noConflict();
         return htmlstr.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
+    
     function setDropDownForSpace(rows) {
-        // Get each field information
+        // Use the row information obtained from getLayout() and extract all Blank space fields.
+        // Create a dropdown menu containing a list of Space fields in the config.
         for (var i = 0; i < rows.length; i++) {
             var fields = rows[i];
             for (var cnt = 0; cnt < fields.length; cnt++) {
@@ -30,8 +32,12 @@ jQuery.noConflict();
         // Set default value
         $('#select_space_field').val(CONF.space);
     }
+    
     function getLayout() {
-        // Retrieve field information, then set dropdown
+        // Retrieve field layout information from the form so that it can later be used to identify Blank space fields.
+        // If layout[].type is ROW, the data is pushed into an array.
+        // If layout[].type is GROUP, it could still contain Blank space fields, so it is further processed in another loop.
+        // If layout[].type is SUBTABLE, it is ignored, as Blank space fields cannot be contained in tables.
         return kintone.api(kintone.api.url('/k/v1/preview/app/form/layout', true), 'GET',
             {'app': kintone.app.getId()}).then(function(resp) {
             var rows = [];
@@ -55,8 +61,10 @@ jQuery.noConflict();
             return alert('Failed to retrieve layout information of the Kintone App.');
         });
     }
+    
     function setDropDownForDate() {
-        // Retrieve field information, then set dropdown
+        // Retrieve all fields from the form and extract all Date fields.
+        // Create a dropdown menu containing a list of Date fields in the config.
         return kintone.api(kintone.api.url('/k/v1/preview/app/form/fields', true), 'GET',
             {'app': kintone.app.getId()}).then(function(resp) {
 
