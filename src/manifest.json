@@ -27,7 +27,7 @@
     ]
   },
   "name": {
-    "en": "Input date with a button click"
+    "en": "Date input button Plug-in"
   },
   "description": {
     "en": "This sample inserts today's date into a Date field of your App with a click of a button."
