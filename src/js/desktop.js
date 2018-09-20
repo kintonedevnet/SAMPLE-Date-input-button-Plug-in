@@ -1,10 +1,13 @@
 /*
- * A button will be placed on the Blank Space field
- * Click the button to add today's date into the date field
- * Copyright (c) 2018 Cybozu
- *
- * Licensed under the MIT License
- */
+MIT License
+Copyright (c) 2018 Cybozu
+https://github.com/kintone/SAMPLE-Date-input-button-Plug-in/blob/master/LICENSE
+*/
+
+/*
+A button will be placed on the Blank Space field
+Click the button to add today's date into the date field
+*/
 
 (function(PLUGIN_ID) {
     'use strict';
